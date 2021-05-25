@@ -1,16 +1,16 @@
 
-const input = document.createElement('input');
-const userList = document.createElement('div');
-const btn = document.createElement('button');
-btn.innerText = 'add';
-btn.onclick = main;
+const inputEl = document.createElement('input');
+const userListEl = document.createElement('div');
+const btnEl = document.createElement('button');
+btnEl.innerText = 'add';
+btnEl.onclick = main;
 
-document.body.append(input,btn,userList);
+document.body.append(inputEl,btnEl,userListEl);
 
 function main() {
-    let task = input.value;
-    userList.innerHTML += `${task} <br/>`;
-    input.value = '';
+    let task = inputEl.value;
+    userListEl.innerHTML += `${task} <br/>`;
+    inputEl.value = '';
 }
 
 
