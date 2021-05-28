@@ -18,9 +18,10 @@ passwordEl.addEventListener('keyup', btnDis);
 btnEl.addEventListener('click', () => {
 
     let wellcomAlertEl = document.querySelector('.wellcom__alert');
-    let incorectAlertEl = document.querySelector('.incorect__alert');
+    let formEl = document.querySelector('.form');
 
     if (loginEl.value == 'admin' && passwordEl.value == 'password123') {
+        formEl.style.display = 'none';
         wellcomAlertEl.style.display = 'block';
     }else{
         wellcomAlertEl.style.display = 'none';
