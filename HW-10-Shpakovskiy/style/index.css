@@ -35,25 +35,6 @@
     background-color: indigo;
     color: #fff;
 }
-.user__form-btn:hover {
-    background-color: gold;
-    transition: all .4s;
-}
-.inner__form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
-    height: 100%;
-    background-color: ivory;
-}
-
-.text {
-    height: 100vh;
-    font-size: 85px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.wellcom__alert {
+    display: none;
 }
