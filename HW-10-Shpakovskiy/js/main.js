@@ -1,31 +1,59 @@
 
-let btnEl = document.querySelector('#check');
-let loginEl = document.querySelector('#login');
-let passwordEl = document.querySelector('#password');
+const USERS = [
+    { login: 'admin', password: 'password'},
+    { login: 'Vlad', password: 'password'},
+    { login: 'user', password: '1234'},
+];
 
-function btnDis() {
-    if(loginEl.value.length == 0 || passwordEl.value.length == 0) {
-        btnEl.disabled = true;
+let btnEl = document.getElementById('check');
+let loginEl = document.getElementById('login');
+let passwordEl = document.getElementById('password');
+const errorMessageEl = document.getElementById('message-incorect'); 
+
+const validateInputs = () => {
+    if (!!loginEl.value || !!passwordEl.value) {
+        btnEl.classList.remove('is-disabled');
+        btnEl.removeAttribute('disabled');
     } else {
-        btnEl.disabled = false;
-        btnEl.style.backgroundColor = 'gold';
-        btnEl.style.cursor = 'pointer';
+        btnEl.classList.add('is-disabled');
+        btnEl.setAttribute('disabled', 'disabled');
     }
+};
+
+const validateInput = inputEl => {
+    return () => {
+        errorMessageEl.classList.add('form__text');
+        if (!inputEl.value) {
+            inputEl.classList.add('arror');
+        } else {
+            inputEl.classList.remove('arror');
+        }
+        validateInputs();
+    };
 }
 
-loginEl.addEventListener('keyup', btnDis);
-passwordEl.addEventListener('keyup', btnDis);
+const onLoginChange = validateInput(loginEl);
+loginEl.addEventListener('blur', onLoginChange);
+loginEl.addEventListener('change', onLoginChange);
+
+const onPasswordChenge = validateInput(passwordEl);
+passwordEl.addEventListener('blur', onPasswordChenge);
+passwordEl.addEventListener('change', onPasswordChenge);
+
+const checkUser = (login, password) => {
+    return !!USERS.find(e => e.login === login && e.password === password);
+};
+
 btnEl.addEventListener('click', () => {
+    const login = loginEl.value;
+    const password = passwordEl.value;
 
-    let wellcomAlertEl = document.querySelector('.wellcom__alert');
-    let formEl = document.querySelector('.form');
-
-    if (loginEl.value == 'admin' && passwordEl.value == 'password123') {
-        formEl.style.display = 'none';
-        wellcomAlertEl.style.display = 'block';
-    }else{
-        wellcomAlertEl.style.display = 'none';
-        alert('incorect login or password!');
-        location.reload();
+    if (checkUser (login, password)) {
+        document.getElementById('form-wraper').remove();
+        document.getElementById('welcom').classList.remove('welcom');
+    } else {
+        errorMessageEl.classList.remove('form__text');
+        document.getElementById('login').value = '';
+        document.getElementById('password').value = '';
     }
-})
+});

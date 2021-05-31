@@ -6,15 +6,24 @@
     box-sizing: border-box;
 }
 
-.form {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+.wrapper__form {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100vh;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    min-height: 200px;
     justify-content: center;
     flex-direction: column;
+    border: 2px solid;
+    border-radius: 10px;
 }
 .user__form-login {
     margin-bottom: 20px;
@@ -32,9 +41,30 @@
     border: none;
     border-radius: 4px;
     text-transform: uppercase;
+    background-color: gold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.is-disabled {
     background-color: indigo;
     color: #fff;
+    cursor: auto;
 }
-.wellcom__alert {
+
+.form__text {
     display: none;
+}
+
+.welcom {
+    display: none;
+}
+.welcom__text {
+    font-size: 72px;
+    text-align: center;
+}
+
+.arror {
+    background-color: wheat;
+    border: none;
 }
