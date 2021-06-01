@@ -1,0 +1,42 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+span {
+    margin: 0 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.todo_list {
+    display: flex;
+    justify-content: center;
+}
+
+
+.wrapper {
+    margin-top: 100px;
+    border: 3px solid;
+    border-radius: 5px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.li_active {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+li {
+    margin-bottom: 30px;
+    cursor: pointer;
+}
