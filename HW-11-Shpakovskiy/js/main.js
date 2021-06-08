@@ -4,15 +4,18 @@ let buttonEl = document.querySelector('.add');
 let todoEl = document.querySelector('.todo');
 const itemTemplate = document.getElementById('item_template').innerHTML;
 
-let time = new Date().toLocaleString();
+function getTime() {
+    return new Date().toLocaleString();
+}
 
-const itemDelete = evt => {
+const itemIvent = evt => {
     
     if (evt.target.dataset['action'] === 'delete') {
         evt.target.parentElement.remove();
     } else if (evt.target.dataset['action'] === 'copy') {
         let liCopyEl = document.createElement('li');
         liCopyEl.innerHTML = evt.target.parentElement.innerHTML;
+        liCopyEl.children[1].innerHTML = getTime();
         todoEl.append(liCopyEl);
     }
 
@@ -24,7 +27,7 @@ const itemDelete = evt => {
     
 };
 
-todoEl.addEventListener('click', itemDelete);
+todoEl.addEventListener('click', itemIvent);
 
 const render = (template, dataObject) => Object
     .keys(dataObject)
@@ -33,7 +36,7 @@ const render = (template, dataObject) => Object
 }, template);
 
 buttonEl.onclick = () => {
-    time = new Date().toLocaleString();
+
     const inputValue = inputEl.value;
 
     if (!inputValue) return;
@@ -42,7 +45,7 @@ buttonEl.onclick = () => {
 
     liEl.innerHTML = render(itemTemplate, {
         label: inputValue,
-        data: time
+        data: getTime()
     });
 
     todoEl.append(liEl);
