@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
     <title>HW-11</title>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     
@@ -28,6 +29,15 @@
 
     </div>
 
-    <script src="js/main.js"></script>
+
+
+    <script id="item_template" type="text/template">
+        
+        <span>{{label}}</span>
+        <span>{{data}}</span>
+        <input type="checkbox">
+        <button data-action="delete">delete</button>
+        <button data-action="copy">copy</buttono>
+    </script>
 </body>
 </html>
