@@ -39,13 +39,20 @@ function closeAll() {
 function accordionInit() {
     Array.prototype.forEach.call(this.element.children, e => {
         e.classList.add('accordion-item');
-        e.children[0].classList.add('title');
-        e.children[1].classList.add('content');
+        if(e.children.length >= 2) {
+            e.children[0].classList.add('title');
+            e.children[1].classList.add('content');
+        } else {
+            throw new Error('Invalid accordion item');
+        }
     })
 }
 
 function toggleItem(index) {
-    this.element.children[index].classList.toggle('extended')
+    const element = this.element.children[index];
+    if(element) {
+        element.classList.toggle('extended');
+    }
 }
 
 function onItemClick(e) {
@@ -63,8 +70,4 @@ function addBlock(title, description) {
 
 const mainAccordion = new Accordion(document.getElementById('accordion'));
 mainAccordion.init();
-
-
-
-
 
