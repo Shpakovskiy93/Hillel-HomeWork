@@ -22,6 +22,7 @@ function getOpenIndexes() {
             console.log(openIndex.indexOf(e));
         }
     })
+    return openIndex
 }
 
 function openAll() {
