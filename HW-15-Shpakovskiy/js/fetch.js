@@ -33,17 +33,19 @@ const onPasswordChenge = validateInput(passwordEl);
 passwordEl.addEventListener('blur', onPasswordChenge);
 passwordEl.addEventListener('change', onPasswordChenge);
 
-const checkUser = (method, url, body = null) => {
+const checkUser = (body = null) => {
     
+    const requestURL = 'https://reqres.in/api/login';
+
     const headers = {
         'Content-Type': 'application/json'
-    }
+    };
 
-    return fetch(url, {
-        method: method,
+    return fetch(requestURL, {
+        method: 'POST',
         body: JSON.stringify(body),
         headers: headers
-    })
+    });
 
 };
 
@@ -52,25 +54,22 @@ btnEl.addEventListener('click', () => {
     const login = loginEl.value;
     const password = passwordEl.value;
 
-    const requestURL = 'https://reqres.in/api/login'
-
     const requestBody = {
         "email": login,
         "password": password
-    }
+    };
 
-    checkUser('POST', requestURL, requestBody)
+    checkUser(requestBody)
     .then( response => {
-
         if(response.status >= 200 && response.status < 400) {
             document.getElementById('form-wraper').remove();
             document.getElementById('welcom').classList.remove('welcom');
-        } else {
-            errorMessageEl.classList.remove('form__text');
-            document.getElementById('login').value = '';
-            document.getElementById('password').value = '';
-        }
-        
+        } 
     })
+    .catch( e => {
+        errorMessageEl.classList.remove('form__text'),
+        document.getElementById('login').value = '',
+        document.getElementById('password').value = ''
+    });
 
 });
