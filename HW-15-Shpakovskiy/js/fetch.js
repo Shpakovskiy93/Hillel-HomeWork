@@ -67,9 +67,9 @@ btnEl.addEventListener('click', () => {
         } 
     })
     .catch( e => {
-        errorMessageEl.classList.remove('form__text'),
-        document.getElementById('login').value = '',
-        document.getElementById('password').value = ''
+        errorMessageEl.classList.remove('form__text');
+        document.getElementById('login').value = '';
+        document.getElementById('password').value = '';
     });
 
 });
